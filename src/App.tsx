@@ -1,23 +1,33 @@
-import { useState } from "react";
-import "./App.css";
+import { useEffect, useState } from "react";
 
-function App() {
-  const [count, setCount] = useState(0);
+function App(): JSX.Element {
+  const [items, setItems] = useState<any>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "https://www.thecocktaildb.com/api/json/v1/1/random.php"
+        );
+        const data = await response.json();
+        setItems(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
-    <>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((countw) => countw + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div>
+      <ul>
+        {items.drinks &&
+          items.drinks.map((item: any) => (
+            <li key={item.idDrink}>{item.strDrink}</li>
+          ))}
+      </ul>
+    </div>
   );
 }
 
