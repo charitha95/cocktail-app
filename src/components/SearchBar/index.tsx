@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { KeyboardEvent, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function SearchBar(): JSX.Element {
@@ -13,9 +13,15 @@ export default function SearchBar(): JSX.Element {
     }
   };
 
+  const handleKeyPress = (event: KeyboardEvent<HTMLInputElement>): void => {
+    if (event.key === "Enter") {
+      handleSearch();
+    }
+  };
+
   return (
     <>
-      <input ref={searchRef} />
+      <input ref={searchRef} onKeyDown={handleKeyPress} />
       <button onClick={handleSearch}>Submit</button>
     </>
   );
