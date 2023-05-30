@@ -21,7 +21,7 @@ function useFetchData(url: string, count = 1): fetchData {
       const requests = Array.from({ length: count }).map(async () => {
         const response = await fetch(url);
         if (!response.ok) {
-          throw new Error(`Something went wrong! Please try again.`);
+          throw new Error("Something went wrong! Please try again.");
         }
         const jsonData = await response.json();
         return jsonData;

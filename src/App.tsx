@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import SearchResults from "./pages/SearchResults";
 
@@ -8,6 +8,7 @@ function App(): JSX.Element {
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route path="/result" element={<SearchResults />} />
+        <Route path="*" element={<Navigate to="/home" />} />
       </Routes>
     </BrowserRouter>
   );
