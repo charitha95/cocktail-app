@@ -1,15 +1,15 @@
 import { useState, useEffect, useCallback } from "react";
-import { Cocktail, CocktailData } from "../types";
+import { Drink, CocktailData } from "../types";
 
 type fetchData = {
-  data: Cocktail[];
+  data: Drink[][];
   isLoading: boolean;
   error: string | null;
   fetchData: () => Promise<void>;
 };
 
 function useFetchData(url: string, count = 1): fetchData {
-  const [data, setData] = useState<Cocktail[]>([]);
+  const [data, setData] = useState<Drink[][]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -28,7 +28,7 @@ function useFetchData(url: string, count = 1): fetchData {
       });
 
       const responseData = await Promise.all<CocktailData>(requests);
-      const formatedData = responseData.map((i) => i.drinks[0]);
+      const formatedData = responseData.map((i) => i.drinks);
 
       setData(formatedData);
     } catch (err) {
