@@ -4,13 +4,16 @@ import { Drink } from "../../types";
 import { useContext } from "react";
 import { FavoriteDrinksContext } from "../../contexts/FavoriteDrinksContext";
 import FavoritesDrinks from "../FavoritesDrinks";
+import { BASE_URL } from "../../constants";
 
 export default function SearchResults(): JSX.Element {
-  const url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
-
   const { search } = useParams();
-  const { data, isLoading, error } = useFetchData(`${url}${search}`);
+
   const { addToFavorites } = useContext(FavoriteDrinksContext);
+
+  const url = `${BASE_URL}/search.php?s=${search}`;
+
+  const { data, isLoading, error } = useFetchData(url);
 
   if (isLoading) {
     return <div>Loading...</div>;

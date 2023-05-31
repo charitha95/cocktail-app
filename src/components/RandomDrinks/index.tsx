@@ -1,10 +1,11 @@
+import { BASE_URL, RANDOM_COUNT } from "../../constants";
+import hasDuplicateDrinks from "../../helpers/hasDuplicateDrinks";
 import useFetchData from "../../hooks/useFetchData";
 
 export default function RandomDrinks(): JSX.Element {
-  const url = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
-  const count = 5;
+  const url = `${BASE_URL}/random.php`;
 
-  const { data, isLoading, error, fetchData } = useFetchData(url, count);
+  const { data, isLoading, error, fetchData } = useFetchData(url, RANDOM_COUNT);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -16,6 +17,10 @@ export default function RandomDrinks(): JSX.Element {
 
   // formating data (0 = drinks array)
   const drinks = data.map((i) => i[0]);
+
+  if (hasDuplicateDrinks(drinks)) {
+    fetchData();
+  }
 
   const handleFetchMoreDrinks = (): void => {
     fetchData();

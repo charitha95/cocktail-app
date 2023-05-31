@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function SearchBar(): JSX.Element {
   const searchRef = useRef<HTMLInputElement | null>(null);
+
   const navigate = useNavigate();
 
   const handleSearch = (): void => {
