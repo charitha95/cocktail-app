@@ -23,7 +23,7 @@ export default function RandomDrinks(): JSX.Element {
 
   return (
     <div>
-      <h1>Random Items</h1>
+      <h1>Random Drinks</h1>
       <ul>
         {drinks &&
           drinks.map((item) => <li key={item.idDrink}>{item.strDrink}</li>)}
