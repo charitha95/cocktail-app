@@ -1,11 +1,5 @@
 import { ReactNode, createContext, useState } from "react";
-import { Drink } from "../types";
-
-type FavContextType = {
-  favorites: Drink[];
-  addToFavorites: (item: Drink) => void;
-  removeFromFavorites: (item: Drink) => void;
-};
+import { Drink, FavContextType } from "../types";
 
 export const FavoriteDrinksContext = createContext<FavContextType>(
   {} as FavContextType

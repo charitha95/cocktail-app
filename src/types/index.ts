@@ -8,3 +8,9 @@ export type Drink = {
 export type CocktailData = {
   drinks: Drink[];
 };
+
+export type FavContextType = {
+  favorites: Drink[];
+  addToFavorites: (item: Drink) => void;
+  removeFromFavorites: (item: Drink) => void;
+};
