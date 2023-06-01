@@ -11,9 +11,7 @@ const ErrorBoundary = ({ children }: ChildrenType): JSX.Element => {
 
     window.addEventListener("error", handleOnError);
 
-    return () => {
-      window.removeEventListener("error", handleOnError);
-    };
+    return () => window.removeEventListener("error", handleOnError);
   }, []);
 
   const handleReload = (): void => {
