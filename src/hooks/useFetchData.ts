@@ -8,6 +8,12 @@ type fetchData = {
   fetchData: () => Promise<void>;
 };
 
+/**
+ * Custom hook to fetch data
+ * @param url url of the endpoint
+ * @param count how many times it should call the endpoint
+ * @returns fetched data and other related variables
+ */
 function useFetchData(url: string, count = 1): fetchData {
   const [data, setData] = useState<Drink[][]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);

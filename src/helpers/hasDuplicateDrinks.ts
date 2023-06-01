@@ -1,5 +1,10 @@
 import { Drink } from "../types";
 
+/**
+ * Function to check for duplicate items in drinks array
+ * @param drinks drinks array as the input
+ * @returns boolean based on condition
+ */
 export default function hasDuplicateDrinks(drinks: Drink[]): boolean {
   const idSet = new Set();
 

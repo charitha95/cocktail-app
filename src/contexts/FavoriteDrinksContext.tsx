@@ -1,5 +1,8 @@
 import { ReactNode, createContext, useState } from "react";
 import { Drink, FavContextType } from "../types";
+import useLocalStorage from "../hooks/useLocalStorage";
+import { FAVORITES_DRINKS_LS } from "../constants";
+import { getStorageValue } from "../helpers/localStorageHelper";
 
 export const FavoriteDrinksContext = createContext<FavContextType>(
   {} as FavContextType
@@ -12,23 +15,34 @@ type FavoritesProviderProps = {
 export default function FavoritesProvider({
   children
 }: FavoritesProviderProps): JSX.Element {
-  const [favorites, setFavorites] = useState<Drink[]>([]);
+  const [favorites, setFavorites] = useState<Drink[]>(
+    getStorageValue(FAVORITES_DRINKS_LS)
+  );
+  const [localStorageFavorites, setLocalStorageFavorites] = useLocalStorage<
+    Drink[]
+  >(FAVORITES_DRINKS_LS, []);
 
-  const addToFavorites = (item: Drink): void | string => {
-    const itemExists = favorites.some(
-      (favorite) => favorite.idDrink === item.idDrink
+  const addToFavorites = (drink: Drink): void | string => {
+    const drinkExists = favorites.some(
+      (favorite) => favorite.idDrink === drink.idDrink
     );
 
-    if (!itemExists) {
-      setFavorites([...favorites, item]);
+    if (!drinkExists) {
+      setFavorites([...favorites, drink]);
+      setLocalStorageFavorites([...localStorageFavorites, drink]);
     } else {
       throw Error("Item exists already!");
     }
   };
 
-  const removeFromFavorites = (item: Drink): void => {
+  const removeFromFavorites = (drink: Drink): void => {
     setFavorites(
-      favorites.filter((favorite) => favorite.idDrink !== item.idDrink)
+      favorites.filter((favorite) => favorite.idDrink !== drink.idDrink)
+    );
+    setLocalStorageFavorites(
+      localStorageFavorites.filter(
+        (favorite) => favorite.idDrink !== drink.idDrink
+      )
     );
   };
 
