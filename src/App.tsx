@@ -1,11 +1,14 @@
+import ErrorBoundary from "./components/ErrorBoundary";
 import FavoritesProvider from "./contexts/FavoriteDrinksContext";
 import AppRoutes from "./routes/AppRoutes";
 
 function App(): JSX.Element {
   return (
-    <FavoritesProvider>
-      <AppRoutes />
-    </FavoritesProvider>
+    <ErrorBoundary>
+      <FavoritesProvider>
+        <AppRoutes />
+      </FavoritesProvider>
+    </ErrorBoundary>
   );
 }
 

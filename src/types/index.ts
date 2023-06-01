@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export type Drink = {
   strDrink: string;
   strCategory: string;
@@ -13,4 +15,8 @@ export type FavContextType = {
   favorites: Drink[];
   addToFavorites: (item: Drink) => void;
   removeFromFavorites: (item: Drink) => void;
+};
+
+export type ChildrenType = {
+  children: ReactNode;
 };

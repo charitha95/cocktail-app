@@ -1,5 +1,5 @@
-import { ReactNode, createContext, useState } from "react";
-import { Drink, FavContextType } from "../types";
+import { createContext, useState } from "react";
+import { ChildrenType, Drink, FavContextType } from "../types";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { FAVORITES_DRINKS_LS } from "../constants";
 import { getStorageValue } from "../helpers/localStorageHelper";
@@ -8,13 +8,9 @@ export const FavoriteDrinksContext = createContext<FavContextType>(
   {} as FavContextType
 );
 
-type FavoritesProviderProps = {
-  children: ReactNode;
-};
-
 export default function FavoritesProvider({
   children
-}: FavoritesProviderProps): JSX.Element {
+}: ChildrenType): JSX.Element {
   const [favorites, setFavorites] = useState<Drink[]>(
     getStorageValue(FAVORITES_DRINKS_LS) || []
   );
