@@ -16,7 +16,7 @@ export default function FavoritesProvider({
   children
 }: FavoritesProviderProps): JSX.Element {
   const [favorites, setFavorites] = useState<Drink[]>(
-    getStorageValue(FAVORITES_DRINKS_LS)
+    getStorageValue(FAVORITES_DRINKS_LS) || []
   );
   const [localStorageFavorites, setLocalStorageFavorites] = useLocalStorage<
     Drink[]

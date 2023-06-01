@@ -28,9 +28,6 @@ export default function SearchResults(): JSX.Element {
 
   const handleAdd = (drink: Drink): void => {
     try {
-      console.log("---");
-      console.log(drink);
-      console.log("---");
       addToFavorites(drink);
     } catch (err) {
       if (err instanceof Error) {
