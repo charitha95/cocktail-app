@@ -8,7 +8,8 @@
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "format": "yarn run lint --fix & yarn prettier --write 'src/**/*.{js,jsx,ts,tsx}'"
+    "format": "yarn run lint --fix & yarn prettier --write 'src/**/*.{js,jsx,ts,tsx}'",
+    "prepare": "husky install"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -36,6 +37,7 @@
     "prettier": "^2.8.8",
     "typescript": "^5.0.4",
     "vite": "^4.3.9",
-    "vite-plugin-eslint": "^1.8.1"
+    "vite-plugin-eslint": "^1.8.1",
+    "husky": "^8.0.0"
   }
 }
