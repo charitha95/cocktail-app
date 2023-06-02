@@ -1,5 +1,4 @@
 $columns: 12;
-$gap: 30px;
 $breakpoints: (
   xs: 480px,
   sm: 768px,
@@ -30,8 +29,6 @@ $breakpoints: (
 .grid {
   display: grid;
   grid-template-columns: repeat($columns, 1fr);
-  grid-gap: $gap;
-  gap: $gap;
 }
 
 @include create-selectors;

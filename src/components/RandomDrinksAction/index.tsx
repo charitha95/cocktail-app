@@ -12,6 +12,7 @@ export default function RandomDrinksAction({
         onClick={() => {
           fetchData();
         }}
+        className={classes["semi-circle"]}
       >
         shuffle
       </button>

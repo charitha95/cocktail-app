@@ -1,3 +1,15 @@
 .action-container {
   color: #000;
+
+  .semi-circle {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50%;
+    border-radius: 50rem 50rem 0 0;
+
+    &:hover {
+      border-radius: 0;
+    }
+  }
 }
