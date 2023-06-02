@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { ChildrenType } from "../../types";
 
-const ErrorBoundary = ({ children }: ChildrenType): JSX.Element => {
+export default function ErrorBoundary({ children }: ChildrenType): JSX.Element {
   const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
@@ -28,6 +28,4 @@ const ErrorBoundary = ({ children }: ChildrenType): JSX.Element => {
   }
 
   return <>{children}</>;
-};
-
-export default ErrorBoundary;
+}
