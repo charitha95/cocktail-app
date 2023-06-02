@@ -7,7 +7,7 @@ import { getStorageValue } from "../helpers/localStorageHelper";
  * @param defaultValue default value if given key doesn't exists
  * @returns tuple of the value and it's setter
  */
-function useLocalStorage<T>(
+export default function useLocalStorage<T>(
   key: string,
   defaultValue: T
 ): [T, Dispatch<SetStateAction<T>>] {
@@ -19,5 +19,3 @@ function useLocalStorage<T>(
 
   return [value, setValue] as [typeof value, typeof setValue];
 }
-
-export default useLocalStorage;

@@ -1,12 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { Drink, CocktailData } from "../types";
-
-type fetchData = {
-  data: Drink[][];
-  isLoading: boolean;
-  error: string | null;
-  fetchData: () => Promise<void>;
-};
+import { Drink, CocktailData, fetchDataType } from "../types";
 
 /**
  * Custom hook to fetch data
@@ -14,7 +7,7 @@ type fetchData = {
  * @param count how many times it should call the endpoint
  * @returns fetched data and other related variables
  */
-function useFetchData(url: string, count = 1): fetchData {
+export default function useFetchData(url: string, count = 1): fetchDataType {
   const [data, setData] = useState<Drink[][]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -52,5 +45,3 @@ function useFetchData(url: string, count = 1): fetchData {
 
   return { data, isLoading, error, fetchData };
 }
-
-export default useFetchData;

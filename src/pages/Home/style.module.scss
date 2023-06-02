@@ -1,0 +1,14 @@
+@import "../../styles/variables";
+
+.home {
+  .aside {
+    background-color: red;
+    margin-top: -132px;
+    z-index: 1;
+		background: $secondary-color;
+
+    .action-container {
+      margin-top: 132px;
+    }
+  }
+}

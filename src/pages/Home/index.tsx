@@ -1,19 +1,23 @@
 import RandomDrinks from "../../components/RandomDrinks";
+import RandomDrinksAction from "../../components/RandomDrinksAction";
 import SearchBar from "../../components/SearchBar";
-import { useNavigate } from "react-router-dom";
+import { BASE_URL, RANDOM_COUNT } from "../../constants";
+import useFetchData from "../../hooks/useFetchData";
+import classes from "./style.module.scss";
 
 export default function Home(): JSX.Element {
-  const navigate = useNavigate();
-
-  const handleFv = (): void => {
-    navigate("/favorites");
-  };
+  const url = `${BASE_URL}/random.php`;
+  const result = useFetchData(url, RANDOM_COUNT);
 
   return (
-    <div>
-      <button onClick={handleFv}>go to favs</button>
-      <SearchBar />
-      <RandomDrinks />
-    </div>
+    <main className={`${classes.home} grid`}>
+      <section className="col-7">
+        <SearchBar />
+        <RandomDrinks {...result} />
+      </section>
+      <section className={`${classes.aside} col-5`}>
+        <RandomDrinksAction fetchData={result.fetchData} />
+      </section>
+    </main>
   );
 }

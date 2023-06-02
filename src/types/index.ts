@@ -20,3 +20,10 @@ export type FavContextType = {
 export type ChildrenType = {
   children: ReactNode;
 };
+
+export type fetchDataType = {
+  data: Drink[][];
+  isLoading: boolean;
+  error: string | null;
+  fetchData: () => Promise<void>;
+};

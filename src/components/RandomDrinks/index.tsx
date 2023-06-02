@@ -1,12 +1,12 @@
-import { BASE_URL, RANDOM_COUNT } from "../../constants";
 import hasDuplicateDrinks from "../../helpers/hasDuplicateDrinks";
-import useFetchData from "../../hooks/useFetchData";
+import { fetchDataType } from "../../types";
 
-export default function RandomDrinks(): JSX.Element {
-  const url = `${BASE_URL}/random.php`;
-
-  const { data, isLoading, error, fetchData } = useFetchData(url, RANDOM_COUNT);
-
+export default function RandomDrinks({
+  data,
+  isLoading,
+  error,
+  fetchData
+}: fetchDataType): JSX.Element {
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -22,10 +22,6 @@ export default function RandomDrinks(): JSX.Element {
     fetchData();
   }
 
-  const handleFetchMoreDrinks = (): void => {
-    fetchData();
-  };
-
   return (
     <div>
       <h1>Random Drinks</h1>
@@ -37,7 +33,6 @@ export default function RandomDrinks(): JSX.Element {
             </li>
           ))}
       </ul>
-      <button onClick={handleFetchMoreDrinks}>Fetch More Items</button>
     </div>
   );
 }
