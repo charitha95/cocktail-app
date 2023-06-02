@@ -29,9 +29,13 @@ export default function RandomDrinks(): JSX.Element {
   return (
     <div>
       <h1>Random Drinks</h1>
-      <ul>
+      <ul className="grid">
         {drinks &&
-          drinks.map((item) => <li key={item.idDrink}>{item.strDrink}</li>)}
+          drinks.map((item) => (
+            <li key={item.idDrink} className="col-12 col-md-3">
+              {item.strDrink}
+            </li>
+          ))}
       </ul>
       <button onClick={handleFetchMoreDrinks}>Fetch More Items</button>
     </div>
