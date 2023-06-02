@@ -18,7 +18,7 @@ export default function FavoritesProvider({
     Drink[]
   >(FAVORITES_DRINKS_LS, []);
 
-  const addToFavorites = (drink: Drink): void | string => {
+  const addToFavorites = (drink: Drink): void => {
     const drinkExists = favorites.some(
       (favorite) => favorite.idDrink === drink.idDrink
     );

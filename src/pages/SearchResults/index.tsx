@@ -9,11 +9,13 @@ import { BASE_URL } from "../../constants";
 export default function SearchResults(): JSX.Element {
   const { search } = useParams();
 
-  const { addToFavorites } = useContext(FavoriteDrinksContext);
-
   const url = `${BASE_URL}/search.php?s=${search}`;
 
   const { data, isLoading, error } = useFetchData(url);
+
+  const { favorites, addToFavorites, removeFromFavorites } = useContext(
+    FavoriteDrinksContext
+  );
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -36,6 +38,29 @@ export default function SearchResults(): JSX.Element {
     }
   };
 
+  const renderActionButton = (drink: Drink): JSX.Element => {
+    if (favorites.filter((fav) => fav.idDrink === drink.idDrink).length > 0) {
+      return (
+        <button
+          onClick={() => {
+            removeFromFavorites(drink);
+          }}
+        >
+          remove
+        </button>
+      );
+    } else
+      return (
+        <button
+          onClick={() => {
+            handleAdd(drink);
+          }}
+        >
+          add
+        </button>
+      );
+  };
+
   return (
     <div>
       <h1>Search Items</h1>
@@ -44,13 +69,7 @@ export default function SearchResults(): JSX.Element {
           drinks.map((drink) => (
             <li key={drink.idDrink}>
               {drink.strDrink}
-              <button
-                onClick={() => {
-                  handleAdd(drink);
-                }}
-              >
-                add
-              </button>
+              {renderActionButton(drink)}
             </li>
           ))}
       </ul>
