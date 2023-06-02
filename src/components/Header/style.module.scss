@@ -1,0 +1,21 @@
+@import "../../styles/variables";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 60px;
+
+  .links {
+    cursor: pointer;
+    color: $text-light-color;
+
+    .active {
+      font-weight: 500;
+      color: $text-color;
+    }
+    > :first-child {
+      margin-right: 50px;
+    }
+  }
+}
