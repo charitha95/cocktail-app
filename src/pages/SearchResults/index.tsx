@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { FavoriteDrinksContext } from "../../contexts/FavoriteDrinksContext";
 import FavoritesDrinks from "../FavoritesDrinks";
 import { BASE_URL } from "../../constants";
+import classes from "./style.module.scss";
 
 export default function SearchResults(): JSX.Element {
   const { search } = useParams();
@@ -63,7 +64,7 @@ export default function SearchResults(): JSX.Element {
 
   return (
     <div>
-      <h1>Search Items</h1>
+      <h1 className={classes.title}>Search Items</h1>
       <ul>
         {drinks &&
           drinks.map((drink) => (

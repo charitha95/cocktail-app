@@ -1,0 +1,37 @@
+/**
+* @desc         setup variables.
+* @requires     none
+*/
+
+// [color - variables]
+// branding
+$primary-color: #212427;
+$secondary-color: #b7e3f8;
+
+// text
+$text-color: #212427;
+$title-color: $text-color;
+$text-tone-color: #767f8a;
+
+// body
+$body-background: #edf3f8;
+
+// font family
+$font-family-title: "Montserrat", sans-serif;
+$font-family-default: "Nunito", sans-serif;
+$font-family-special: "Playfair Display", sans-serif;
+
+// border colors
+$border-color: #d5d8da;
+$border-divider: #dbdbdb;
+
+// border radius
+$border-radius-default: 0px;
+
+//breakpoints
+$breakpoints: (
+  "xsmall": 480px,
+  "small": 768px,
+  "medium": 960px,
+  "large": 1170px
+) !default;
