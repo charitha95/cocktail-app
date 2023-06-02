@@ -1,5 +1,8 @@
 import { KeyboardEvent, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import Button from "../UIKit/Button";
+import searchIcon from "../../assets/icons/search.svg";
+import classes from "./style.module.scss";
 
 export default function SearchBar(): JSX.Element {
   const searchRef = useRef<HTMLInputElement | null>(null);
@@ -21,9 +24,12 @@ export default function SearchBar(): JSX.Element {
   };
 
   return (
-    <>
+    <div className={classes["search-bar"]}>
       <input ref={searchRef} onKeyDown={handleKeyPress} />
-      <button onClick={handleSearch}>Submit</button>
-    </>
+      <Button
+        variant="primary"
+        icon={<img src={searchIcon} alt="favorites" onClick={handleSearch} />}
+      />
+    </div>
   );
 }
