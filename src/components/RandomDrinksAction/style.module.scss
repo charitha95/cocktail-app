@@ -1,7 +1,10 @@
+@import "../../styles/placeholder";
+
 .action-container {
   color: #000;
 
   .semi-circle {
+    @extend %ease;
     position: absolute;
     bottom: 0;
     width: 100%;
