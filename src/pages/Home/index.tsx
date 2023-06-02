@@ -11,12 +11,16 @@ export default function Home(): JSX.Element {
 
   return (
     <main className={`${classes.home} grid`}>
-      <section className="col-7">
-        <SearchBar />
-        <RandomDrinks {...result} />
+      <section className={`${classes.left} col-7`}>
+        <div className={classes["content-wrapper"]}>
+          <SearchBar />
+          <RandomDrinks {...result} />
+        </div>
       </section>
-      <section className={`${classes.aside} col-5`}>
-        <RandomDrinksAction fetchData={result.fetchData} />
+      <section className={`${classes.right} col-5`}>
+        <div className={classes["content-wrapper"]}>
+          <RandomDrinksAction fetchData={result.fetchData} />
+        </div>
       </section>
     </main>
   );

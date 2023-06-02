@@ -92,3 +92,13 @@ table {
   background: rgba(182, 180, 180, 0.486);
   cursor: pointer;
 }
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+* {
+  border: solid 1px red !important;
+}
