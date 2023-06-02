@@ -1,6 +1,8 @@
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/branding/logo.svg";
 import classes from "./style.module.scss";
+import Button from "../UIKit/Button";
+import heatIcon from "../../assets/icons/heart-wht.svg";
 
 export default function Header(): JSX.Element {
   const links = [
@@ -25,7 +27,10 @@ export default function Header(): JSX.Element {
         ))}
       </div>
       <div>
-        <button>favs</button>
+        <Button
+          variant="primary"
+          icon={<img src={heatIcon} alt="favorites" />}
+        />
       </div>
     </header>
   );
