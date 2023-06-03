@@ -42,9 +42,22 @@ export default function FavoritesProvider({
     );
   };
 
+  const toggleFavorites = (drink: Drink): void => {
+    if (favorites.filter((fav) => fav.idDrink === drink.idDrink).length > 0) {
+      removeFromFavorites(drink);
+    } else {
+      addToFavorites(drink);
+    }
+  };
+
   return (
     <FavoriteDrinksContext.Provider
-      value={{ favorites, addToFavorites, removeFromFavorites }}
+      value={{
+        favorites,
+        addToFavorites,
+        removeFromFavorites,
+        toggleFavorites
+      }}
     >
       {children}
     </FavoriteDrinksContext.Provider>

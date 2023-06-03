@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
 import useFetchData from "../../hooks/useFetchData";
-import { Drink } from "../../types";
 import { useContext } from "react";
 import { FavoriteDrinksContext } from "../../contexts/FavoriteDrinksContext";
 import { BASE_URL } from "../../constants";
@@ -13,9 +12,7 @@ export default function SearchResults(): JSX.Element {
 
   const { data, isLoading, error } = useFetchData(url);
 
-  const { favorites, addToFavorites, removeFromFavorites } = useContext(
-    FavoriteDrinksContext
-  );
+  const { favorites, toggleFavorites } = useContext(FavoriteDrinksContext);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -39,26 +36,12 @@ export default function SearchResults(): JSX.Element {
     }
   };
 
-  const toggleFav = (drink: Drink): void => {
-    try {
-      if (favorites.filter((fav) => fav.idDrink === drink.idDrink).length > 0) {
-        removeFromFavorites(drink);
-      } else {
-        addToFavorites(drink);
-      }
-    } catch (err) {
-      if (err instanceof Error) {
-        alert(err.message);
-      }
-    }
-  };
-
   return (
     <ResultsGrid
       favorites={favorites}
       drinks={drinks}
       handleSearch={handleSearch}
-      toggleFavorite={toggleFav}
+      toggleFavorite={toggleFavorites}
     />
   );
 }

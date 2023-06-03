@@ -15,6 +15,7 @@ export type FavContextType = {
   favorites: Drink[];
   addToFavorites: (item: Drink) => void;
   removeFromFavorites: (item: Drink) => void;
+  toggleFavorites: (item: Drink) => void;
 };
 
 export type ChildrenType = {

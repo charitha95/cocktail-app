@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { FavoriteDrinksContext } from "../../contexts/FavoriteDrinksContext";
 import hasDuplicateDrinks from "../../helpers/hasDuplicateDrinks";
 import { fetchDataType } from "../../types";
 import DrinkCard from "../DrinkCard";
@@ -10,6 +12,8 @@ export default function RandomDrinks({
   error,
   fetchData
 }: fetchDataType): JSX.Element {
+  const { favorites, toggleFavorites } = useContext(FavoriteDrinksContext);
+
   if (isLoading) {
     return (
       <div className={`${classes["random-drinks"]} grid`}>
@@ -37,11 +41,13 @@ export default function RandomDrinks({
       {drinks &&
         drinks.map((item) => (
           <DrinkCard
-            isFav={false}
+            isFav={
+              favorites.filter((fav) => fav.idDrink === item.idDrink).length > 0
+            }
             key={item.idDrink}
             drink={item}
             cssClasses={`col-12 col-md-4`}
-            toggleFavorite={() => console.log("clicked")}
+            toggleFavorite={toggleFavorites}
           />
         ))}
     </div>
