@@ -1,5 +1,6 @@
 import classes from "./style.module.scss";
 import Typewriter from "typewriter-effect";
+import shuffleIcon from "../../assets/icons/shuffle.svg";
 
 const texts = [
   "crafting unique drinks.",
@@ -36,6 +37,7 @@ export default function RandomDrinksAction({
         className={classes["semi-circle"]}
       >
         The Cocktail Shuffle
+        <img src={shuffleIcon} alt="shuffle" />
       </button>
     </div>
   );
