@@ -4,6 +4,13 @@
 .action-container {
   color: #000;
 
+  .info {
+    margin: 0 50px;
+    text-align: center;
+    font-size: 18px;
+    padding-top: 120px;
+  }
+
   .semi-circle {
     @extend %ease;
     position: absolute;

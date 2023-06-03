@@ -4,12 +4,12 @@ import classes from "./style.module.scss";
 import Button from "../UIKit/Button";
 import heartIcon from "../../assets/icons/heart-wht.svg";
 
-export default function Header(): JSX.Element {
-  const links = [
-    { to: "/home", name: "Home" },
-    { to: "/favorites", name: "Favorites" }
-  ];
+const links = [
+  { to: "/home", name: "Home" },
+  { to: "/favorites", name: "Favorites" }
+];
 
+export default function Header(): JSX.Element {
   return (
     <div className={classes["header-wrapper"]}>
       <header className={classes.header}>
