@@ -1,0 +1,32 @@
+@import "../../styles/variables";
+
+.card {
+  img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+  }
+
+  .details {
+    display: flex;
+    justify-content: space-between;
+
+    section {
+      margin-top: 10px;
+      font-size: 14px;
+      p {
+        &:last-child {
+          color: $text-light-color;
+          margin-top: 4px;
+        }
+      }
+    }
+
+    img {
+      width: auto;
+      height: auto;
+      object-fit: fill;
+      margin-top: -10px;
+    }
+  }
+}

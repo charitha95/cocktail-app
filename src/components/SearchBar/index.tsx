@@ -25,7 +25,11 @@ export default function SearchBar(): JSX.Element {
 
   return (
     <div className={classes["search-bar"]}>
-      <input ref={searchRef} onKeyDown={handleKeyPress} />
+      <input
+        ref={searchRef}
+        onKeyDown={handleKeyPress}
+        placeholder="Search here"
+      />
       <Button
         variant="primary"
         icon={<img src={searchIcon} alt="favorites" onClick={handleSearch} />}

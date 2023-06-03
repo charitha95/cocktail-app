@@ -1,5 +1,7 @@
 import hasDuplicateDrinks from "../../helpers/hasDuplicateDrinks";
 import { fetchDataType } from "../../types";
+import DrinkCard from "../DrinkCard";
+import classes from "./style.module.scss";
 
 export default function RandomDrinks({
   data,
@@ -27,9 +29,11 @@ export default function RandomDrinks({
       <ul className="grid">
         {drinks &&
           drinks.map((item) => (
-            <li key={item.idDrink} className="col-12 col-md-3">
-              {item.strDrink}
-            </li>
+            <DrinkCard
+              key={item.idDrink}
+              drink={item}
+              cssClasses={`${classes["random-drinks"]} col-12 col-md-4`}
+            />
           ))}
       </ul>
     </div>

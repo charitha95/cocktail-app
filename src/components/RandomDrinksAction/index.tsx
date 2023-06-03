@@ -14,7 +14,7 @@ export default function RandomDrinksAction({
         }}
         className={classes["semi-circle"]}
       >
-        shuffle
+        The Cocktail Shuffle
       </button>
     </div>
   );
