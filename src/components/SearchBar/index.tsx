@@ -3,13 +3,13 @@ import Button from "../UIKit/Button";
 import searchIcon from "../../assets/icons/search.svg";
 import classes from "./style.module.scss";
 
-type SearchBarType = {
+type SearchBarProps = {
   handleSearch: (searchValue: HTMLInputElement | null) => void;
 };
 
 export default function SearchBar({
   handleSearch
-}: SearchBarType): JSX.Element {
+}: SearchBarProps): JSX.Element {
   const searchRef = useRef<HTMLInputElement | null>(null);
 
   const handleKeyPress = (event: KeyboardEvent<HTMLInputElement>): void => {

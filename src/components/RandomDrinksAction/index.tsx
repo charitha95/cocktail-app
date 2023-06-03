@@ -9,12 +9,12 @@ const texts = [
   "balancing flavors and combining ingredients."
 ];
 
-type RandomDrinksActionType = {
+type RandomDrinksActionProps = {
   fetchData: () => Promise<void>;
 };
 export default function RandomDrinksAction({
   fetchData
-}: RandomDrinksActionType): JSX.Element {
+}: RandomDrinksActionProps): JSX.Element {
   return (
     <div className={classes["action-container"]}>
       <div className={classes.info}>

@@ -1,9 +1,7 @@
 import { useContext } from "react";
 import { FavoriteDrinksContext } from "../../contexts/FavoriteDrinksContext";
 import { Drink } from "../../types";
-import classes from "./style.module.scss";
-import SearchBar from "../../components/SearchBar";
-import DrinkCard from "../../components/DrinkCard";
+import ResultsGrid from "../../components/ResultsGrid";
 
 export default function FavoritesDrinks(): JSX.Element {
   const { favorites, removeFromFavorites } = useContext(FavoriteDrinksContext);
@@ -24,28 +22,10 @@ export default function FavoritesDrinks(): JSX.Element {
   };
 
   return (
-    <main className={`${classes.results} grid`}>
-      <section className={`col-12`}>
-        <div className={classes["search-bar"]}>
-          <SearchBar handleSearch={handleSearch} />
-        </div>
-      </section>
-      <section className={`${classes.drinks} col-12 grid`}>
-        {favorites.length > 0 ? (
-          <>
-            {favorites.map((drink: Drink) => (
-              <DrinkCard
-                key={drink.idDrink}
-                drink={drink}
-                cssClasses={`col-2 col-md-2`}
-                toggleFavorite={handleRemove}
-              />
-            ))}
-          </>
-        ) : (
-          <p>No items in the favorites list.</p>
-        )}
-      </section>
-    </main>
+    <ResultsGrid
+      drinks={favorites}
+      handleSearch={handleSearch}
+      toggleFavorite={handleRemove}
+    />
   );
 }

@@ -1,0 +1,14 @@
+@import "../../styles/variables";
+
+.results {
+  height: 100%;
+
+  .search-bar {
+    margin: $top-margin auto 0;
+    max-width: 640px;
+  }
+  .drinks {
+    grid-gap: 32px 56px;
+    margin: 50px $side-margin 0;
+  }
+}
