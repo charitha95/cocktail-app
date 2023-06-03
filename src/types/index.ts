@@ -26,5 +26,5 @@ export type fetchDataType = {
   data: Drink[][];
   isLoading: boolean;
   error: string | null;
-  fetchData: () => Promise<void>;
+  fetchData: (newUrl: string) => Promise<void>;
 };

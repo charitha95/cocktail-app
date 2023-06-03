@@ -10,7 +10,7 @@ export default function SearchResults(): JSX.Element {
 
   const url = `${BASE_URL}/search.php?s=${search}`;
 
-  const { data, isLoading, error } = useFetchData(url);
+  const { data, isLoading, error, fetchData } = useFetchData(url);
 
   const { favorites, toggleFavorites } = useContext(FavoriteDrinksContext);
 
@@ -32,6 +32,7 @@ export default function SearchResults(): JSX.Element {
         alert("search value cannot be empty!");
         return;
       }
+      fetchData(`${BASE_URL}/search.php?s=${value}`);
       // implement search here
     }
   };
