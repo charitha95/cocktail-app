@@ -1,25 +1,20 @@
 import { KeyboardEvent, useRef } from "react";
-import { useNavigate } from "react-router-dom";
 import Button from "../UIKit/Button";
 import searchIcon from "../../assets/icons/search.svg";
 import classes from "./style.module.scss";
 
-export default function SearchBar(): JSX.Element {
+type SearchBarType = {
+  handleSearch: (searchValue: HTMLInputElement | null) => void;
+};
+
+export default function SearchBar({
+  handleSearch
+}: SearchBarType): JSX.Element {
   const searchRef = useRef<HTMLInputElement | null>(null);
-
-  const navigate = useNavigate();
-
-  const handleSearch = (): void => {
-    if (searchRef.current) {
-      const value = searchRef.current.value;
-      if (!value) return;
-      navigate(`/result/${value}`);
-    }
-  };
 
   const handleKeyPress = (event: KeyboardEvent<HTMLInputElement>): void => {
     if (event.key === "Enter") {
-      handleSearch();
+      handleSearch(searchRef.current);
     }
   };
 
@@ -32,7 +27,13 @@ export default function SearchBar(): JSX.Element {
       />
       <Button
         variant="primary"
-        icon={<img src={searchIcon} alt="favorites" onClick={handleSearch} />}
+        icon={
+          <img
+            src={searchIcon}
+            alt="favorites"
+            onClick={() => handleSearch(searchRef.current)}
+          />
+        }
       />
     </div>
   );

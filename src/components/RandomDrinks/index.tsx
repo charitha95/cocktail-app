@@ -40,6 +40,7 @@ export default function RandomDrinks({
             key={item.idDrink}
             drink={item}
             cssClasses={`col-12 col-md-4`}
+            toggleFavorite={() => console.log("clicked")}
           />
         ))}
     </div>

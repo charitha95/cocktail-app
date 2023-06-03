@@ -29,12 +29,12 @@ export default function Header(): JSX.Element {
             </NavLink>
           ))}
         </div>
-        <div>
+        <NavLink to="/favorites">
           <Button
             variant="primary"
             icon={<img src={heartIcon} alt="favorites" />}
           />
-        </div>
+        </NavLink>
       </header>
     </div>
   );

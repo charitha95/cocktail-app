@@ -12,8 +12,11 @@
     width: 100%;
     top: 30px;
 
-    .links {
+    a {
       cursor: pointer;
+    }
+
+    .links {
       color: $text-light-color;
       font-size: 18px;
 

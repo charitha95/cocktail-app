@@ -5,11 +5,13 @@ import heartIcon from "../../assets/icons/heart-clr.svg";
 type DrinkCardProps = {
   cssClasses: string;
   drink: Drink;
+  toggleFavorite: (drink: Drink) => void;
 };
 
 export default function DrinkCard({
   cssClasses,
-  drink
+  drink,
+  toggleFavorite
 }: DrinkCardProps): JSX.Element {
   return (
     <div className={`${cssClasses} ${classes.card}`}>
@@ -19,7 +21,7 @@ export default function DrinkCard({
           <p>{drink.strDrink}</p>
           <p>{drink.strCategory}</p>
         </section>
-        <img src={heartIcon} alt="like" />
+        <img src={heartIcon} alt="like" onClick={() => toggleFavorite(drink)} />
       </div>
     </div>
   );
