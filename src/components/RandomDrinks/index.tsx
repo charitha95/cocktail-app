@@ -24,7 +24,6 @@ export default function RandomDrinks({
 
   return (
     <div>
-      <h1>Random Drinks</h1>
       <ul className="grid">
         {drinks &&
           drinks.map((item) => (

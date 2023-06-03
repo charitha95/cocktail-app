@@ -1,6 +1,7 @@
 import RandomDrinks from "../../components/RandomDrinks";
 import RandomDrinksAction from "../../components/RandomDrinksAction";
 import SearchBar from "../../components/SearchBar";
+import Title from "../../components/UIKit/Title";
 import { BASE_URL, RANDOM_COUNT } from "../../constants";
 import useFetchData from "../../hooks/useFetchData";
 import classes from "./style.module.scss";
@@ -14,6 +15,7 @@ export default function Home(): JSX.Element {
       <section className={`${classes.left} col-7`}>
         <div className={classes["content-wrapper"]}>
           <SearchBar />
+          <Title title="Raise a Glass" />
           <RandomDrinks {...result} />
         </div>
       </section>
