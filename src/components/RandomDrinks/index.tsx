@@ -26,13 +26,13 @@ export default function RandomDrinks({
 
   return (
     <div>
-      <ul className="grid">
+      <ul className={`${classes["random-drinks"]} grid`}>
         {drinks &&
           drinks.map((item) => (
             <DrinkCard
               key={item.idDrink}
               drink={item}
-              cssClasses={`${classes["random-drinks"]} col-12 col-md-4`}
+              cssClasses={`col-12 col-md-4`}
             />
           ))}
       </ul>
