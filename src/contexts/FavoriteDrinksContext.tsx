@@ -14,6 +14,8 @@ export default function FavoritesProvider({
   const [favorites, setFavorites] = useState<Drink[]>(
     getStorageValue(FAVORITES_DRINKS_LS) || []
   );
+  const [filteredFavorites, setFilteredFavorites] = useState<Drink[]>([]);
+
   const [localStorageFavorites, setLocalStorageFavorites] = useLocalStorage<
     Drink[]
   >(FAVORITES_DRINKS_LS, []);
@@ -50,10 +52,19 @@ export default function FavoritesProvider({
     }
   };
 
+  const filterFavorites = (filterTerm: string): void => {
+    const filtered = favorites.filter((i) =>
+      i.strDrink.toLowerCase().includes(filterTerm.toLowerCase())
+    );
+    setFilteredFavorites(filtered);
+  };
+
   return (
     <FavoriteDrinksContext.Provider
       value={{
         favorites,
+        filteredFavorites,
+        filterFavorites,
         addToFavorites,
         removeFromFavorites,
         toggleFavorites

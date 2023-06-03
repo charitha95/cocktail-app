@@ -1,11 +1,12 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { FavoriteDrinksContext } from "../../contexts/FavoriteDrinksContext";
 import { Drink } from "../../types";
 import ResultsGrid from "../../components/ResultsGrid";
 
 export default function FavoritesDrinks(): JSX.Element {
-  const { favorites, removeFromFavorites } = useContext(FavoriteDrinksContext);
-
+  const { favorites, removeFromFavorites, filterFavorites, filteredFavorites } =
+    useContext(FavoriteDrinksContext);
+  const [searchTerm, setSearchTerm] = useState("");
   const handleRemove = (drink: Drink): void => {
     removeFromFavorites(drink);
   };
@@ -14,17 +15,22 @@ export default function FavoritesDrinks(): JSX.Element {
     if (searchValue) {
       const value = searchValue.value;
       if (!value) {
-        alert("search value cannot be empty!");
+        alert("search cannot be empty");
         return;
       }
-      // implement search here
+      setSearchTerm(value);
+      filterFavorites(value);
     }
   };
 
   return (
     <ResultsGrid
       favorites={favorites}
-      drinks={favorites}
+      drinks={
+        searchTerm && filteredFavorites.length > 0
+          ? filteredFavorites
+          : favorites
+      }
       handleSearch={handleSearch}
       toggleFavorite={handleRemove}
     />

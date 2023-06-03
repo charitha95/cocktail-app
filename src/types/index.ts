@@ -12,6 +12,8 @@ export type CocktailData = {
 };
 
 export type FavContextType = {
+  filteredFavorites: Drink[];
+  filterFavorites: (term: string) => void;
   favorites: Drink[];
   addToFavorites: (item: Drink) => void;
   removeFromFavorites: (item: Drink) => void;
@@ -26,5 +28,5 @@ export type fetchDataType = {
   data: Drink[][];
   isLoading: boolean;
   error: string | null;
-  fetchData: (newUrl: string) => Promise<void>;
+  fetchData: (newUrl?: string) => Promise<void>;
 };
