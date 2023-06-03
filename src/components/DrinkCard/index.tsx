@@ -1,14 +1,17 @@
 import { Drink } from "../../types";
 import classes from "./style.module.scss";
-import heartIcon from "../../assets/icons/heart-clr.svg";
+import heartIconCrl from "../../assets/icons/heart-clr.svg";
+import heartIconOtl from "../../assets/icons/heart-otl.svg";
 
 type DrinkCardProps = {
+  isFav: boolean;
   cssClasses: string;
   drink: Drink;
   toggleFavorite: (drink: Drink) => void;
 };
 
 export default function DrinkCard({
+  isFav,
   cssClasses,
   drink,
   toggleFavorite
@@ -21,7 +24,11 @@ export default function DrinkCard({
           <p>{drink.strDrink}</p>
           <p>{drink.strCategory}</p>
         </section>
-        <img src={heartIcon} alt="like" onClick={() => toggleFavorite(drink)} />
+        <img
+          src={isFav ? heartIconCrl : heartIconOtl}
+          alt="like"
+          onClick={() => toggleFavorite(drink)}
+        />
       </div>
     </div>
   );

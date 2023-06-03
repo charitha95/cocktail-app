@@ -23,6 +23,7 @@ export default function FavoritesDrinks(): JSX.Element {
 
   return (
     <ResultsGrid
+      favorites={favorites}
       drinks={favorites}
       handleSearch={handleSearch}
       toggleFavorite={handleRemove}

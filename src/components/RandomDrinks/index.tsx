@@ -37,6 +37,7 @@ export default function RandomDrinks({
       {drinks &&
         drinks.map((item) => (
           <DrinkCard
+            isFav={false}
             key={item.idDrink}
             drink={item}
             cssClasses={`col-12 col-md-4`}

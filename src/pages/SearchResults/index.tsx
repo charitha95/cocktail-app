@@ -3,9 +3,8 @@ import useFetchData from "../../hooks/useFetchData";
 import { Drink } from "../../types";
 import { useContext } from "react";
 import { FavoriteDrinksContext } from "../../contexts/FavoriteDrinksContext";
-import FavoritesDrinks from "../FavoritesDrinks";
 import { BASE_URL } from "../../constants";
-import classes from "./style.module.scss";
+import ResultsGrid from "../../components/ResultsGrid";
 
 export default function SearchResults(): JSX.Element {
   const { search } = useParams();
@@ -29,9 +28,24 @@ export default function SearchResults(): JSX.Element {
   // formating data (0 = drinks array)
   const drinks = data[0];
 
-  const handleAdd = (drink: Drink): void => {
+  const handleSearch = (searchValue: HTMLInputElement | null): void => {
+    if (searchValue) {
+      const value = searchValue.value;
+      if (!value) {
+        alert("search value cannot be empty!");
+        return;
+      }
+      // implement search here
+    }
+  };
+
+  const toggleFav = (drink: Drink): void => {
     try {
-      addToFavorites(drink);
+      if (favorites.filter((fav) => fav.idDrink === drink.idDrink).length > 0) {
+        removeFromFavorites(drink);
+      } else {
+        addToFavorites(drink);
+      }
     } catch (err) {
       if (err instanceof Error) {
         alert(err.message);
@@ -39,42 +53,12 @@ export default function SearchResults(): JSX.Element {
     }
   };
 
-  const renderActionButton = (drink: Drink): JSX.Element => {
-    if (favorites.filter((fav) => fav.idDrink === drink.idDrink).length > 0) {
-      return (
-        <button
-          onClick={() => {
-            removeFromFavorites(drink);
-          }}
-        >
-          remove
-        </button>
-      );
-    } else
-      return (
-        <button
-          onClick={() => {
-            handleAdd(drink);
-          }}
-        >
-          add
-        </button>
-      );
-  };
-
   return (
-    <div>
-      <h1 className={classes.title}>Search Items</h1>
-      <ul>
-        {drinks &&
-          drinks.map((drink) => (
-            <li key={drink.idDrink}>
-              {drink.strDrink}
-              {renderActionButton(drink)}
-            </li>
-          ))}
-      </ul>
-      <FavoritesDrinks />
-    </div>
+    <ResultsGrid
+      favorites={favorites}
+      drinks={drinks}
+      handleSearch={handleSearch}
+      toggleFavorite={toggleFav}
+    />
   );
 }

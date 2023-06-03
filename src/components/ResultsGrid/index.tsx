@@ -4,12 +4,14 @@ import SearchBar from "../SearchBar";
 import classes from "./style.module.scss";
 
 type ResultsGridProps = {
+  favorites: Drink[];
   handleSearch: (searchValue: HTMLInputElement | null) => void;
   toggleFavorite: (drink: Drink) => void;
   drinks: Drink[];
 };
 
 export default function ResultsGrid({
+  favorites,
   handleSearch,
   drinks,
   toggleFavorite
@@ -22,10 +24,14 @@ export default function ResultsGrid({
         </div>
       </section>
       <section className={`${classes.drinks} col-12 grid`}>
-        {drinks.length > 0 ? (
+        {drinks && drinks.length > 0 ? (
           <>
             {drinks.map((drink: Drink) => (
               <DrinkCard
+                isFav={
+                  favorites.filter((fav) => fav.idDrink === drink.idDrink)
+                    .length > 0
+                }
                 key={drink.idDrink}
                 drink={drink}
                 cssClasses={`col-2 col-md-2`}
