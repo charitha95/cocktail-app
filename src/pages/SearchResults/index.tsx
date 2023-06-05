@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { FavoriteDrinksContext } from "../../contexts/FavoriteDrinksContext";
 import { BASE_URL } from "../../constants";
 import ResultsGrid from "../../components/ResultsGrid";
+import DrinkCardSkeleton from "../../components/DrinkCardSkeleton";
 
 export default function SearchResults(): JSX.Element {
   const { search } = useParams();
@@ -15,7 +16,13 @@ export default function SearchResults(): JSX.Element {
   const { favorites, toggleFavorites } = useContext(FavoriteDrinksContext);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className={`skeleton-grid grid`}>
+        {Array.from({ length: 12 }).map((_, idx) => (
+          <DrinkCardSkeleton key={idx} colClass="col-12 col-md-3" />
+        ))}
+      </div>
+    );
   }
 
   if (error) {
