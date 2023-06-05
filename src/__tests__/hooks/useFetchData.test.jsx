@@ -8,7 +8,7 @@ describe("useFetchData", () => {
       {
         strDrink: "Mojito",
         strCategory: "Cocktail",
-        strDrinkThumb: "https://example.com/mojito.jpg",
+        strDrinkThumb: "https://cocktail.com/mojito.jpg",
         idDrink: "1"
       }
     ]
@@ -20,7 +20,9 @@ describe("useFetchData", () => {
 
   it("fetches data successfully", async () => {
     fetch.mockResponseOnce(JSON.stringify(mockData));
-    const { result } = renderHook(() => useFetchData(""));
+    const { result } = renderHook(() =>
+      useFetchData("https://cocktail.com/api/v1/")
+    );
 
     await waitFor(() => {
       expect(result.current.data[0]).toEqual(mockData.drinks);
@@ -32,7 +34,9 @@ describe("useFetchData", () => {
   it("handles fetch error", async () => {
     const errorMessage = "Error message";
     fetch.mockRejectOnce(new Error(errorMessage));
-    const { result } = renderHook(() => useFetchData(""));
+    const { result } = renderHook(() =>
+      useFetchData("https://cocktail.com/api/v1/")
+    );
 
     await waitFor(() => {
       expect(result.current.data).toEqual([]);
@@ -48,7 +52,9 @@ describe("useFetchData", () => {
       .mockResponseOnce(JSON.stringify(mockData))
       .mockResponseOnce(JSON.stringify(mockData))
       .mockResponseOnce(JSON.stringify(mockData));
-    const { result } = renderHook(() => useFetchData("", 5));
+    const { result } = renderHook(() =>
+      useFetchData("https://cocktail.com/api/v1/", 5)
+    );
 
     await waitFor(() => {
       expect(result.current.data).toEqual([
@@ -65,7 +71,9 @@ describe("useFetchData", () => {
 
   it("re-fetches data when calling fetchData", async () => {
     fetch.mockResponseOnce(JSON.stringify(mockData));
-    const { result } = renderHook(() => useFetchData(""));
+    const { result } = renderHook(() =>
+      useFetchData("https://cocktail.com/api/v1/")
+    );
 
     await waitFor(() => {
       expect(result.current.data[0]).toEqual(mockData.drinks);
