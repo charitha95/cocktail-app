@@ -33,7 +33,6 @@ export default function SearchResults(): JSX.Element {
         return;
       }
       fetchData(`${BASE_URL}/search.php?s=${value}`);
-      // implement search here
     }
   };
 

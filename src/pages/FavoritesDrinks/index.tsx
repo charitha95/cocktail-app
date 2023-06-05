@@ -14,10 +14,6 @@ export default function FavoritesDrinks(): JSX.Element {
   const handleSearch = (searchValue: HTMLInputElement | null): void => {
     if (searchValue) {
       const value = searchValue.value;
-      if (!value) {
-        alert("search cannot be empty");
-        return;
-      }
       setSearchTerm(value);
       filterFavorites(value);
     }
