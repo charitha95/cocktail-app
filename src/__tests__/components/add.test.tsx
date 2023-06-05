@@ -4,22 +4,20 @@ import { BrowserRouter } from "react-router-dom";
 import Header from "../../components/Header";
 
 describe("Header", () => {
-  it("renders logo", () => {
+  beforeEach(() => {
     render(
       <BrowserRouter>
         <Header />
       </BrowserRouter>
     );
+  });
+
+  it("renders logo", () => {
     const logoElement = screen.getByTestId("logo");
     expect(logoElement).not.toBe(null);
   });
 
   it("renders navigation links", () => {
-    render(
-      <BrowserRouter>
-        <Header />
-      </BrowserRouter>
-    );
     const homeLink = screen.getByTestId("link-home");
     const favoritesLink = screen.getByTestId("link-favorites");
 
@@ -28,21 +26,11 @@ describe("Header", () => {
   });
 
   it("renders favorites button", () => {
-    render(
-      <BrowserRouter>
-        <Header />
-      </BrowserRouter>
-    );
     const favoritesButton = screen.getByTestId("fav-button-link");
     expect(favoritesButton).not.toBe(null);
   });
 
   it("applies active class to active link", () => {
-    render(
-      <BrowserRouter>
-        <Header />
-      </BrowserRouter>
-    );
     const homeLink = screen.getByTestId("link-home");
     const favoritesLink = screen.getByTestId("link-favorites");
 
@@ -51,11 +39,6 @@ describe("Header", () => {
   });
 
   it("navigates to correct path on link click", () => {
-    render(
-      <BrowserRouter>
-        <Header />
-      </BrowserRouter>
-    );
     const homeLink = screen.getByTestId("link-home");
     const favoritesLink = screen.getByTestId("link-favorites");
 
