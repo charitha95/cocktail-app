@@ -8,7 +8,7 @@ const vitestConfig: VitestUserConfigInterface = {
   test: {
     globals: true,
     environment: "jsdom",
-    setupFiles: "@testing-library/jest-dom",
+    setupFiles: ["./setupVitest.js"],
     mockReset: true
   }
 };
