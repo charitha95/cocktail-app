@@ -1,18 +1,24 @@
 import { describe, it, expect } from "vitest";
 import hasDuplicateDrinks from "../../helpers/hasDuplicateDrinks";
 
+const mockProperties = {
+  strCategory: "",
+  strDrinkThumb: "",
+  strDrink: ""
+};
+
 describe("hasDuplicateDrinks", () => {
   const mockDuplicateDrinks = [
-    { idDrink: "1", name: "Mojito" },
-    { idDrink: "2", name: "Cosmopolitan" },
-    { idDrink: "1", name: "Margarita" },
-    { idDrink: "3", name: "Negroni" }
+    { idDrink: "1", ...mockProperties },
+    { idDrink: "2", ...mockProperties },
+    { idDrink: "1", ...mockProperties },
+    { idDrink: "3", ...mockProperties }
   ];
   const mockUniqueDrinks = [
-    { idDrink: "1", name: "Mojito" },
-    { idDrink: "2", name: "Cosmopolitan" },
-    { idDrink: "3", name: "Margarita" },
-    { idDrink: "4", name: "Negroni" }
+    { idDrink: "1", ...mockProperties },
+    { idDrink: "2", ...mockProperties },
+    { idDrink: "3", ...mockProperties },
+    { idDrink: "4", ...mockProperties }
   ];
 
   it("returns true if there are duplicate drinks", () => {
