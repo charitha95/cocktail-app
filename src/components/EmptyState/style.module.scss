@@ -1,0 +1,19 @@
+.empty-state {
+  font-size: 32px;
+
+  .wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+
+    .try {
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    button {
+      margin-top: 5px;
+      width: 100%;
+    }
+  }
+}

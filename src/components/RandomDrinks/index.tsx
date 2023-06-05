@@ -3,7 +3,7 @@ import { FavoriteDrinksContext } from "../../contexts/FavoriteDrinksContext";
 import hasDuplicateDrinks from "../../helpers/hasDuplicateDrinks";
 import { fetchDataType } from "../../types";
 import DrinkCard from "../DrinkCard";
-import DrinkCardSkeleton from "../DrinkCardSkeleton/DrinkCardSkeleton";
+import DrinkCardSkeleton from "../DrinkCardSkeleton";
 import classes from "./style.module.scss";
 
 export default function RandomDrinks({

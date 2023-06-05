@@ -22,7 +22,6 @@ export default function Home(): JSX.Element {
       navigate(`/result/${value}`);
     }
   };
-
   return (
     <main className={`${classes.home} grid`}>
       <section className={`${classes.left} col-7`}>

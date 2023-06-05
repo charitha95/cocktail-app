@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { ChildrenType } from "../../types";
+import EmptyState from "../EmptyState";
 
 export default function ErrorBoundary({ children }: ChildrenType): JSX.Element {
   const [hasError, setHasError] = useState(false);
@@ -20,9 +21,12 @@ export default function ErrorBoundary({ children }: ChildrenType): JSX.Element {
 
   if (hasError) {
     return (
-      <div>
-        Something went wrong.
-        <button onClick={handleReload}>reload app</button>
+      <div style={{ marginTop: 150 }}>
+        <EmptyState
+          message="Something went wrong."
+          hasTryAgainAction
+          onAction={handleReload}
+        />
       </div>
     );
   }

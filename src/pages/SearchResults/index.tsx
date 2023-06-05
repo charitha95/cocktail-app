@@ -42,6 +42,7 @@ export default function SearchResults(): JSX.Element {
       drinks={drinks}
       handleSearch={handleSearch}
       toggleFavorite={toggleFavorites}
+      emptyStateMessage="No results found :("
     />
   );
 }

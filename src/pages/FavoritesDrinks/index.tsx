@@ -29,6 +29,7 @@ export default function FavoritesDrinks(): JSX.Element {
       }
       handleSearch={handleSearch}
       toggleFavorite={handleRemove}
+      emptyStateMessage="No favorites found :("
     />
   );
 }

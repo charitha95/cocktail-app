@@ -2,20 +2,25 @@ import { Drink } from "../../types";
 import DrinkCard from "../DrinkCard";
 import SearchBar from "../SearchBar";
 import classes from "./style.module.scss";
+import EmptyState from "../EmptyState";
 
 type ResultsGridProps = {
   favorites: Drink[];
   handleSearch: (searchValue: HTMLInputElement | null) => void;
   toggleFavorite: (drink: Drink) => void;
   drinks: Drink[];
+  emptyStateMessage: string;
 };
 
 export default function ResultsGrid({
   favorites,
   handleSearch,
   drinks,
-  toggleFavorite
+  toggleFavorite,
+  emptyStateMessage
 }: ResultsGridProps): JSX.Element {
+  const hasDrinks = drinks && drinks.length > 0;
+
   return (
     <main className={`${classes.results} grid`}>
       <section className={`col-12`}>
@@ -23,8 +28,10 @@ export default function ResultsGrid({
           <SearchBar handleSearch={handleSearch} />
         </div>
       </section>
-      <section className={`${classes.drinks} col-12 grid`}>
-        {drinks && drinks.length > 0 ? (
+      <section
+        className={`${classes.drinks} col-12 ${hasDrinks ? "grid" : ""}`}
+      >
+        {hasDrinks ? (
           <>
             {drinks.map((drink: Drink) => (
               <DrinkCard
@@ -40,7 +47,7 @@ export default function ResultsGrid({
             ))}
           </>
         ) : (
-          <p>No items in the favorites list.</p>
+          <EmptyState message={emptyStateMessage} />
         )}
       </section>
     </main>
