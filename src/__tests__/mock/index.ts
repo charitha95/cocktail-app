@@ -20,6 +20,7 @@ export const mockDuplicateDrinks = [
   { idDrink: "1", ...mockProperties },
   { idDrink: "3", ...mockProperties }
 ];
+
 export const mockUniqueDrinks = [
   { idDrink: "1", ...mockProperties },
   { idDrink: "2", ...mockProperties },
@@ -52,6 +53,27 @@ export const mockData = [
       strDrinkThumb: "drink3.jpg"
     }
   ]
+];
+
+export const mockedGridData = [
+  {
+    idDrink: "1",
+    strDrink: "Drink 1",
+    strCategory: "Category 1",
+    strDrinkThumb: "drink1.jpg"
+  },
+  {
+    idDrink: "2",
+    strDrink: "Drink 2",
+    strCategory: "Category 2",
+    strDrinkThumb: "drink2.jpg"
+  },
+  {
+    idDrink: "3",
+    strDrink: "Drink 3",
+    strCategory: "Category 3",
+    strDrinkThumb: "drink3.jpg"
+  }
 ];
 
 export const mockFavorites = [

@@ -1,7 +1,7 @@
 import { render, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
-import DrinkCard from "../../components/DrinkCard";
 import { mockedDrink } from "../mock";
+import DrinkCard from "../../components/DrinkCard";
 
 describe("Header", () => {
   it("renders the drink card correctly", () => {
