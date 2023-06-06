@@ -1,3 +1,4 @@
+@import "./variables";
 /**
 * @desc         common style goes here. also known as global.
 * @requires     none
@@ -6,4 +7,11 @@
 .skeleton-grid {
   grid-gap: 32px 56px;
   padding: 150px;
+  @media (max-width: 768px) {
+    padding: 150px $side-margin-sm;
+    display: block;
+    > * {
+      margin-bottom: 32px;
+    }
+  }
 }

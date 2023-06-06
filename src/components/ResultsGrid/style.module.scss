@@ -1,4 +1,5 @@
 @import "../../styles/variables";
+@import "../../styles/mixins";
 
 .results {
   height: 100%;
@@ -6,9 +7,17 @@
   .search-bar {
     margin: $top-margin auto 0;
     max-width: 640px;
+
+    @include respond-to("small") {
+      margin: $top-margin $side-margin-sm 0;
+    }
   }
   .drinks {
     grid-gap: 32px 56px;
     margin: 50px $side-margin 0;
+    @include respond-to("small") {
+      margin: 50px $side-margin-sm 0;
+      display: block !important;
+    }
   }
 }
