@@ -1,5 +1,11 @@
+@import "../../../styles/mixins";
+
 .title {
   margin: 20px 0;
   font-size: 32px;
   font-weight: 500;
+  @include respond-to("small") {
+    margin: 45px 0;
+    text-align: center;
+  }
 }

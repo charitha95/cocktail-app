@@ -1,3 +1,9 @@
+@import "../../styles/mixins";
+
 .random-drinks {
   grid-gap: 32px 56px;
+
+  @include respond-to("small") {
+    display: block !important;
+  }
 }

@@ -1,8 +1,12 @@
 @import "../../styles/placeholder";
 @import "../../styles/variables";
+@import "../../styles/mixins";
 
 .action-container {
   color: #000;
+  @include respond-to("small") {
+    display: none;
+  }
 
   .info {
     margin: 0 50px;

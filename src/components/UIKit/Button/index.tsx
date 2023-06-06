@@ -6,6 +6,7 @@ type ButtonProps = {
   icon?: ReactNode;
   name?: string;
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
+  classes?: string;
 };
 
 /**
@@ -27,11 +28,12 @@ export default function Button({
   variant,
   icon,
   name,
-  onClick
+  onClick,
+  classes
 }: ButtonProps): JSX.Element {
   return (
     <button
-      className={`${styles.button} ${styles[`button-${variant}`]} `}
+      className={`${classes} ${styles.button} ${styles[`button-${variant}`]} `}
       onClick={onClick}
     >
       {icon && <div className={`${styles["button-icon"]}`}>{icon}</div>}

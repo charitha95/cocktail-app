@@ -30,7 +30,11 @@ export default function Header(): JSX.Element {
             </NavLink>
           ))}
         </div>
-        <NavLink to="/favorites" data-testid="fav-button-link">
+        <NavLink
+          to="/favorites"
+          data-testid="fav-button-link"
+          className={styles["fav-btn"]}
+        >
           <Button
             variant="primary"
             icon={<img src={heartIcon} alt="favorites" />}
