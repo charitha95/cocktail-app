@@ -1,4 +1,4 @@
-import classes from "./style.module.scss";
+import styles from "./style.module.scss";
 import GlassIcon from "../../assets/icons/glass.svg";
 import Button from "../UIKit/Button";
 
@@ -14,8 +14,8 @@ export default function EmptyState({
   onAction
 }: EmptyStateProps): JSX.Element {
   return (
-    <div className={classes["empty-state"]}>
-      <div className={classes["wrapper"]}>
+    <div className={styles["empty-state"]}>
+      <div className={styles["wrapper"]}>
         <img src={GlassIcon} alt="glass" />
         <section>
           <span>{message}</span>

@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/branding/logo.svg";
-import classes from "./style.module.scss";
+import styles from "./style.module.scss";
 import Button from "../UIKit/Button";
 import heartIcon from "../../assets/icons/heart-wht.svg";
 
@@ -11,19 +11,19 @@ const links = [
 
 export default function Header(): JSX.Element {
   return (
-    <div className={classes["header-wrapper"]}>
-      <header className={classes.header}>
+    <div className={styles["header-wrapper"]}>
+      <header className={styles.header}>
         <NavLink to="/">
           <img src={logo} alt="Cocktail Alchemy" data-testid="logo" />
         </NavLink>
-        <div className={classes.links}>
+        <div className={styles.links}>
           {links.map((link, idx) => (
             <NavLink
               data-testid={`link-${link.name.toLocaleLowerCase()}`}
               key={idx}
               to={link.to}
               className={({ isActive }) =>
-                isActive ? `${classes.active}` : "not-active"
+                isActive ? `${styles.active}` : "not-active"
               }
             >
               {link.name}

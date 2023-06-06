@@ -1,4 +1,4 @@
-import classes from "./style.module.scss";
+import styles from "./style.module.scss";
 import Typewriter from "typewriter-effect";
 import shuffleIcon from "../../assets/icons/shuffle.svg";
 
@@ -16,8 +16,8 @@ export default function RandomDrinksAction({
   fetchData
 }: RandomDrinksActionProps): JSX.Element {
   return (
-    <div className={classes["action-container"]}>
-      <div className={classes.info}>
+    <div className={styles["action-container"]}>
+      <div className={styles.info}>
         <span>
           Unleash Your Mixology Skills with Cocktail Craze! Discover a wide
           range of cocktail recipes, learn the art of
@@ -34,7 +34,7 @@ export default function RandomDrinksAction({
         onClick={() => {
           fetchData();
         }}
-        className={classes["semi-circle"]}
+        className={styles["semi-circle"]}
       >
         The Cocktail Shuffle
         <img src={shuffleIcon} alt="shuffle" />

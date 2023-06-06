@@ -1,5 +1,5 @@
 import { Drink } from "../../types";
-import classes from "./style.module.scss";
+import styles from "./style.module.scss";
 import heartIconCrl from "../../assets/icons/heart-clr.svg";
 import heartIconOtl from "../../assets/icons/heart-otl.svg";
 
@@ -17,9 +17,9 @@ export default function DrinkCard({
   toggleFavorite
 }: DrinkCardProps): JSX.Element {
   return (
-    <div className={`${cssClasses} ${classes.card}`}>
+    <div className={`${cssClasses} ${styles.card}`}>
       <img src={drink.strDrinkThumb} alt="drink-card" />
-      <div className={classes.details}>
+      <div className={styles.details}>
         <section>
           <p>{drink.strDrink}</p>
           <p>{drink.strCategory}</p>

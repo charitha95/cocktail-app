@@ -1,5 +1,5 @@
 import { ReactNode, MouseEvent } from "react";
-import classes from "./style.module.scss";
+import styles from "./style.module.scss";
 
 type ButtonProps = {
   variant: "primary" | "secondary";
@@ -16,11 +16,11 @@ export default function Button({
 }: ButtonProps): JSX.Element {
   return (
     <button
-      className={`${classes.button} ${classes[`button-${variant}`]} `}
+      className={`${styles.button} ${styles[`button-${variant}`]} `}
       onClick={onClick}
     >
-      {icon && <div className={`${classes["button-icon"]}`}>{icon}</div>}
-      {name && <span className={`${classes["button-text"]}`}>{name}</span>}
+      {icon && <div className={`${styles["button-icon"]}`}>{icon}</div>}
+      {name && <span className={`${styles["button-text"]}`}>{name}</span>}
     </button>
   );
 }

@@ -5,7 +5,7 @@ import SearchBar from "../../components/SearchBar";
 import Title from "../../components/UIKit/Title";
 import { BASE_URL, RANDOM_COUNT } from "../../constants";
 import useFetchData from "../../hooks/useFetchData";
-import classes from "./style.module.scss";
+import styles from "./style.module.scss";
 
 export default function Home(): JSX.Element {
   const url = `${BASE_URL}/random.php`;
@@ -23,16 +23,16 @@ export default function Home(): JSX.Element {
     }
   };
   return (
-    <main className={`${classes.home} grid`}>
-      <section className={`${classes.left} col-7`}>
-        <div className={classes["content-wrapper"]}>
+    <main className={`${styles.home} grid`}>
+      <section className={`${styles.left} col-7`}>
+        <div className={styles["content-wrapper"]}>
           <SearchBar handleSearch={handleSearch} />
           <Title title="Raise a Glass" />
           <RandomDrinks {...result} />
         </div>
       </section>
-      <section className={`${classes.right} col-5`}>
-        <div className={classes["content-wrapper"]}>
+      <section className={`${styles.right} col-5`}>
+        <div className={styles["content-wrapper"]}>
           <RandomDrinksAction fetchData={result.fetchData} />
         </div>
       </section>

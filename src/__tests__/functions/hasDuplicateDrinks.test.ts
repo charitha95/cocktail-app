@@ -1,13 +1,13 @@
 import { describe, it, expect } from "vitest";
 import hasDuplicateDrinks from "../../helpers/hasDuplicateDrinks";
 
-const mockProperties = {
-  strCategory: "",
-  strDrinkThumb: "",
-  strDrink: ""
-};
-
 describe("hasDuplicateDrinks", () => {
+  const mockProperties = {
+    strCategory: "",
+    strDrinkThumb: "",
+    strDrink: ""
+  };
+
   const mockDuplicateDrinks = [
     { idDrink: "1", ...mockProperties },
     { idDrink: "2", ...mockProperties },

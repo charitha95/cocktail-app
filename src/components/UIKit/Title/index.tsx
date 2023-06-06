@@ -1,5 +1,5 @@
-import classes from "./style.module.scss";
+import styles from "./style.module.scss";
 
 export default function Title({ title }: { title: string }): JSX.Element {
-  return <h1 className={classes.title}>{title}</h1>;
+  return <h1 className={styles.title}>{title}</h1>;
 }

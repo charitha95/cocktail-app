@@ -1,7 +1,7 @@
 import { KeyboardEvent, useRef } from "react";
 import Button from "../UIKit/Button";
 import searchIcon from "../../assets/icons/search.svg";
-import classes from "./style.module.scss";
+import styles from "./style.module.scss";
 
 type SearchBarProps = {
   handleSearch: (searchValue: HTMLInputElement | null) => void;
@@ -19,7 +19,7 @@ export default function SearchBar({
   };
 
   return (
-    <div className={classes["search-bar"]}>
+    <div className={styles["search-bar"]}>
       <input
         ref={searchRef}
         onKeyDown={handleKeyPress}

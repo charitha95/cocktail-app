@@ -1,7 +1,7 @@
 import { Drink } from "../../types";
 import DrinkCard from "../DrinkCard";
 import SearchBar from "../SearchBar";
-import classes from "./style.module.scss";
+import styles from "./style.module.scss";
 import EmptyState from "../EmptyState";
 
 type ResultsGridProps = {
@@ -22,15 +22,13 @@ export default function ResultsGrid({
   const hasDrinks = drinks && drinks.length > 0;
 
   return (
-    <main className={`${classes.results} grid`}>
+    <main className={`${styles.results} grid`}>
       <section className={`col-12`}>
-        <div className={classes["search-bar"]}>
+        <div className={styles["search-bar"]}>
           <SearchBar handleSearch={handleSearch} />
         </div>
       </section>
-      <section
-        className={`${classes.drinks} col-12 ${hasDrinks ? "grid" : ""}`}
-      >
+      <section className={`${styles.drinks} col-12 ${hasDrinks ? "grid" : ""}`}>
         {hasDrinks ? (
           <>
             {drinks.map((drink: Drink) => (

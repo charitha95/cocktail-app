@@ -4,7 +4,7 @@ import hasDuplicateDrinks from "../../helpers/hasDuplicateDrinks";
 import { fetchDataType } from "../../types";
 import DrinkCard from "../DrinkCard";
 import DrinkCardSkeleton from "../DrinkCardSkeleton";
-import classes from "./style.module.scss";
+import styles from "./style.module.scss";
 
 export default function RandomDrinks({
   data,
@@ -16,7 +16,7 @@ export default function RandomDrinks({
 
   if (isLoading) {
     return (
-      <div className={`${classes["random-drinks"]} grid`}>
+      <div className={`${styles["random-drinks"]} grid`}>
         {Array.from({ length: 5 }).map((_, idx) => (
           <DrinkCardSkeleton key={idx} />
         ))}
@@ -37,7 +37,7 @@ export default function RandomDrinks({
   }
 
   return (
-    <div className={`${classes["random-drinks"]} grid`}>
+    <div className={`${styles["random-drinks"]} grid`}>
       {drinks &&
         drinks.map((item) => (
           <DrinkCard
