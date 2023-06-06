@@ -1,17 +1,11 @@
 import { renderHook, waitFor, act } from "@testing-library/react";
 import useFetchData from "../../hooks/useFetchData";
 import { describe, it, expect } from "vitest";
+import { mockedDrink } from "../mock/index";
 
 describe("useFetchData", () => {
   const mockData = {
-    drinks: [
-      {
-        strDrink: "Mojito",
-        strCategory: "Cocktail",
-        strDrinkThumb: "https://cocktail.com/mojito.jpg",
-        idDrink: "1"
-      }
-    ]
+    drinks: [mockedDrink]
   };
 
   beforeEach(() => {
