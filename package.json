@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "format": "yarn run lint --fix & yarn prettier --write 'src/**/*.{js,jsx,ts,tsx}'",
     "prepare": "husky install",
-    "test": "vitest"
+    "test": "vitest",
+    "pretest": "vitest --run"
   },
   "dependencies": {
     "node-sass": "^9.0.0",
