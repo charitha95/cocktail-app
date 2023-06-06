@@ -6,7 +6,7 @@ import EmptyState from "../EmptyState";
 
 type ResultsGridProps = {
   favorites: Drink[];
-  handleSearch: (searchValue: HTMLInputElement | null) => void;
+  handleSearch: (searchValue: string) => void;
   toggleFavorite: (drink: Drink) => void;
   drinks: Drink[];
   emptyStateMessage: string;

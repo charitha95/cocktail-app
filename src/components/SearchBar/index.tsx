@@ -4,7 +4,7 @@ import searchIcon from "../../assets/icons/search.svg";
 import styles from "./style.module.scss";
 
 type SearchBarProps = {
-  handleSearch: (searchValue: HTMLInputElement | null) => void;
+  handleSearch: (searchValue: string) => void;
 };
 
 export default function SearchBar({
@@ -14,7 +14,7 @@ export default function SearchBar({
 
   const handleKeyPress = (event: KeyboardEvent<HTMLInputElement>): void => {
     if (event.key === "Enter") {
-      handleSearch(searchRef.current);
+      if (searchRef.current) handleSearch(searchRef.current?.value);
     }
   };
 
@@ -24,16 +24,12 @@ export default function SearchBar({
         ref={searchRef}
         onKeyDown={handleKeyPress}
         placeholder="Search here"
+        data-testid="search-input"
       />
       <Button
         variant="primary"
-        icon={
-          <img
-            src={searchIcon}
-            alt="favorites"
-            onClick={() => handleSearch(searchRef.current)}
-          />
-        }
+        icon={<img src={searchIcon} alt="search-btn" />}
+        onClick={() => handleSearch(searchRef.current?.value || "")}
       />
     </div>
   );

@@ -32,15 +32,12 @@ export default function SearchResults(): JSX.Element {
   // formating data (0 = drinks array)
   const drinks = data[0];
 
-  const handleSearch = (searchValue: HTMLInputElement | null): void => {
-    if (searchValue) {
-      const value = searchValue.value;
-      if (!value) {
-        alert("search value cannot be empty!");
-        return;
-      }
-      fetchData(`${BASE_URL}/search.php?s=${value}`);
+  const handleSearch = (searchValue: string): void => {
+    if (!searchValue) {
+      alert("search value cannot be empty!");
+      return;
     }
+    fetchData(`${BASE_URL}/search.php?s=${searchValue}`);
   };
 
   return (

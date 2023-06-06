@@ -11,12 +11,9 @@ export default function FavoritesDrinks(): JSX.Element {
     removeFromFavorites(drink);
   };
 
-  const handleSearch = (searchValue: HTMLInputElement | null): void => {
-    if (searchValue) {
-      const value = searchValue.value;
-      setSearchTerm(value);
-      filterFavorites(value);
-    }
+  const handleSearch = (searchValue: string): void => {
+    setSearchTerm(searchValue);
+    filterFavorites(searchValue);
   };
 
   return (

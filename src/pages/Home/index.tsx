@@ -12,15 +12,12 @@ export default function Home(): JSX.Element {
   const result = useFetchData(url, RANDOM_COUNT);
   const navigate = useNavigate();
 
-  const handleSearch = (searchValue: HTMLInputElement | null): void => {
-    if (searchValue) {
-      const value = searchValue.value;
-      if (!value) {
-        alert("search value cannot be empty!");
-        return;
-      }
-      navigate(`/result/${value}`);
+  const handleSearch = (searchValue: string): void => {
+    if (!searchValue) {
+      alert("search value cannot be empty!");
+      return;
     }
+    navigate(`/result/${searchValue}`);
   };
   return (
     <main className={`${styles.home} grid`}>
