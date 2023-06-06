@@ -99,3 +99,12 @@ export const mockContextValue = {
   filteredFavorites: mockFavorites,
   filterFavorites: vi.fn()
 };
+
+export const mockFavContextDefaultValue = {
+  favorites: [],
+  toggleFavorites: vi.fn(),
+  addToFavorites: vi.fn(),
+  removeFromFavorites: vi.fn(),
+  filteredFavorites: [],
+  filterFavorites: vi.fn()
+};

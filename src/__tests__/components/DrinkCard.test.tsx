@@ -3,7 +3,7 @@ import { describe, it, expect, vi } from "vitest";
 import { mockedDrink } from "../mock";
 import DrinkCard from "../../components/DrinkCard";
 
-describe("Header", () => {
+describe("DrinkCard", () => {
   it("renders the drink card correctly", () => {
     const toggleFavorite = vi.fn();
     const { getByTestId } = render(
