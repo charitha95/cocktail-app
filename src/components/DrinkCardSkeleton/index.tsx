@@ -10,7 +10,10 @@ export default function DrinkCardSkeleton({
   colClass = "col-12 col-md-4"
 }: DrinkCardSkeletonProps): JSX.Element {
   return (
-    <div className={`${styles.skeleton} ${colClass}`}>
+    <div
+      className={`${styles.skeleton} ${colClass}`}
+      data-testid="drink-card-skeleton"
+    >
       <SkeletonTheme baseColor="#E7EEF3" highlightColor="#E0E8ED">
         <Skeleton height={150} width="100%" />
         <Skeleton count={2} className={styles.detail} />
