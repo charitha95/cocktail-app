@@ -10,10 +10,11 @@ describe("SearchBar", () => {
     );
     const inputElement = getByTestId("search-input");
 
+    fireEvent.change(inputElement, { target: { value: "margarita" } });
     fireEvent.keyDown(inputElement, { key: "Enter" });
 
     expect(handleSearchMock).toHaveBeenCalledTimes(1);
-    expect(handleSearchMock).toHaveBeenCalledWith(inputElement);
+    expect(handleSearchMock).toHaveBeenCalledWith("margarita");
   });
 
   it("calls handleSearch when search button is clicked", () => {

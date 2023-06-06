@@ -1,3 +1,4 @@
+import { vi } from "vitest";
 import { Drink } from "../../types";
 
 export const mockedDrink = {
@@ -25,3 +26,54 @@ export const mockUniqueDrinks = [
   { idDrink: "3", ...mockProperties },
   { idDrink: "4", ...mockProperties }
 ];
+
+export const mockData = [
+  [
+    {
+      idDrink: "1",
+      strDrink: "Drink 1",
+      strCategory: "Category 1",
+      strDrinkThumb: "drink1.jpg"
+    }
+  ],
+  [
+    {
+      idDrink: "2",
+      strDrink: "Drink 2",
+      strCategory: "Category 2",
+      strDrinkThumb: "drink2.jpg"
+    }
+  ],
+  [
+    {
+      idDrink: "3",
+      strDrink: "Drink 3",
+      strCategory: "Category 3",
+      strDrinkThumb: "drink3.jpg"
+    }
+  ]
+];
+
+export const mockFavorites = [
+  {
+    idDrink: "1",
+    strDrink: "Drink 1",
+    strCategory: "Category 1",
+    strDrinkThumb: "drink1.jpg"
+  },
+  {
+    idDrink: "3",
+    strDrink: "Drink 3",
+    strCategory: "Category 3",
+    strDrinkThumb: "drink3.jpg"
+  }
+];
+
+export const mockContextValue = {
+  favorites: mockFavorites,
+  toggleFavorites: vi.fn(),
+  addToFavorites: vi.fn(),
+  removeFromFavorites: vi.fn(),
+  filteredFavorites: mockFavorites,
+  filterFavorites: vi.fn()
+};
