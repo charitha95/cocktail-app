@@ -11,7 +11,7 @@ import shuffleIcon from "../../assets/icons/shuffle.svg";
 
 export default function Home(): JSX.Element {
   const url = `${BASE_URL}/random.php`;
-  const result = useFetchData(url, RANDOM_COUNT);
+  const result = useFetchData(url, RANDOM_COUNT, false);
   const navigate = useNavigate();
 
   const handleSearch = (searchValue: string): void => {

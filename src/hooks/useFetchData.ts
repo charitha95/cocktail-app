@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { Drink, CocktailData, fetchDataType } from "../types";
+import searchCacheHelper from "../helpers/searchCacheHelper";
 
 /**
  * Custom hook to fetch data
@@ -7,7 +8,11 @@ import { Drink, CocktailData, fetchDataType } from "../types";
  * @param count how many times it should call the endpoint
  * @returns fetched data and other related variables
  */
-export default function useFetchData(url: string, count = 1): fetchDataType {
+export default function useFetchData(
+  url: string,
+  count = 1,
+  useCache = false
+): fetchDataType {
   const [data, setData] = useState<Drink[][]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -18,8 +23,20 @@ export default function useFetchData(url: string, count = 1): fetchDataType {
       setError(null);
 
       try {
+        const cacheKey = newUrl || url;
+        const currentTime = Date.now();
+
+        // check whether there's any cached data
+        if (useCache) {
+          const cachedData = searchCacheHelper(cacheKey, currentTime);
+          if (cachedData) {
+            setData(cachedData);
+            return;
+          }
+        }
+
         const requests = Array.from({ length: count }).map(async () => {
-          const response = await fetch(newUrl || url);
+          const response = await fetch(cacheKey);
           if (!response.ok) {
             throw new Error("Something went wrong! Please try again.");
           }
@@ -28,9 +45,13 @@ export default function useFetchData(url: string, count = 1): fetchDataType {
         });
 
         const responseData = await Promise.all<CocktailData>(requests);
-        const formatedData = responseData.map((i) => i.drinks);
+        const formattedData = responseData.map((i) => i.drinks);
 
-        setData(formatedData);
+        if (useCache) {
+          localStorage.setItem(cacheKey, JSON.stringify(formattedData));
+          localStorage.setItem(`${cacheKey}_timestamp`, currentTime.toString());
+        }
+        setData(formattedData);
       } catch (err) {
         if (err instanceof Error) {
           setError(err.message);
@@ -39,7 +60,7 @@ export default function useFetchData(url: string, count = 1): fetchDataType {
         setIsLoading(false);
       }
     },
-    [url, count]
+    [url, count, useCache]
   );
 
   useEffect(() => {

@@ -11,7 +11,7 @@ export default function SearchResults(): JSX.Element {
 
   const url = `${BASE_URL}/search.php?s=${search}`;
 
-  const { data, isLoading, error, fetchData } = useFetchData(url);
+  const { data, isLoading, error, fetchData } = useFetchData(url, 1, true);
 
   const { favorites, toggleFavorites } = useContext(FavoriteDrinksContext);
 
